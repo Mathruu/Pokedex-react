@@ -28,6 +28,19 @@
   color: #61dafb;
 }
 
+.zoom-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.zoom-image {
+  transition: tranformation 0.3s ease;
+}
+
+.zoom-container:hover .zoom-image {
+  transform: scale(1.1);
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

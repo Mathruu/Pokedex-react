@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import { Box, Button, CardActionArea, CardActions } from '@mui/material';
 import { type } from '@testing-library/user-event/dist/type';
 
-export default function PokemonCard({name, image, types}) {
+export default function PokemonCard({name, image, types, order}) {
 
     const typeHandler = () => {
         if (types[1]) {
@@ -18,27 +18,23 @@ export default function PokemonCard({name, image, types}) {
 return (
     <Card sx={{ maxWidth: 345 }}>
         <CardActionArea>
-            <CardMedia component="img" height="140" image={image} alt="green iguana"/>
+            <div className='zoom-container'>
+                <CardMedia component="img" height="140" image={image} className="zoom-image"/>
+            </div>
                 <CardContent>
                     <Box display="flex" justifyContent="space-between" alignItems="center">
-                    <Typography gutterBottom variant="h5" component="div">
-                        {name}
-                    </Typography>
-                    <Typography gutterBottom variant="caption" component="div">
-                        {typeHandler()}
-                    </Typography>
+                        <Typography gutterBottom variant="h5" component="div" style={{ fontWeight: 'bold' }}>
+                            {name}
+                        </Typography>
+                        <Typography gutterBottom variant="subtitle2" component="div" style={{ fontWeight: 'bold' }}>
+                            {"#0" + order}
+                        </Typography>
+                        <Typography gutterBottom variant="caption" component="div">
+                            {typeHandler()}
+                        </Typography>
                     </Box>
-                {/* <Typography variant="body2" color="text.secondary">
-                    Lizards are a widespread group of squamate reptiles, with over 6,000
-                    species, ranging across all continents except Antarctica
-                </Typography> */}
-            </CardContent>
+                </CardContent>
         </CardActionArea>
-        {/* <CardActions>
-            <Button size="small" color="primary">
-                Share
-            </Button>
-        </CardActions> */}
     </Card>
 );
 }
